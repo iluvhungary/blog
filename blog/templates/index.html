@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <div class="container mt-5">
+        <h2>Discover The Most Amazing Tourist Places In Idukki</h2> <br>
+        <div class="row">
+<!--  Taking the products from product_list(views) -->
+            {% for product in products %}
+                <div class="col-md-4 mb-4" >
+                    <div class="card h-100">
+                        <a href="{% url 'blogapp:product_detail' product.pk %}">
+                            <img src="{{ product.img.url }}" alt="{{ product.created_name }}" class="card-img-top">
+                        </a>
+                        <div class="card-body">
+                            <h5 class="card-title">{{ product.name }}</h5>
+                            <p class="card-text">{{ product.short_description }}</p>
+                            <a href="{% url 'blogapp:edit' product.pk %}">Edit</a>
+                            <a href="{% url 'blogapp:delete' product.pk %}">Delete</a> <br>
+                            <small class="card-text">Created at: {{ product.created_at }}</small> <br>
+                            <small class="card-text">Updated at: {{ product.updated_at }}</small>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+  <!-- Pagination links -->
+
+ <div class="mx-auto">
+      {% if products.paginator.num_pages > 1 %}
+      <hr>
+      <div class="text-center">
+          {% for pg in products.paginator.page_range %}
+          <a href="?page={{pg}}" class="btn btn-light btn-sm {% if products.number == pg %} active {% endif %}">{{pg}}</a>
+      {% endfor %}
+      </div>
+    {% endif %}
+  </div>
+    </div>
+<!-- Add Bootstrap JS and jQuery scripts here (if needed) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+{% endblock %}

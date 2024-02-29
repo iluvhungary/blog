@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2> Delete Blog Post </h2>
+
+<p>Are you sure you want to delete "{{ product.name }}"? </p>  <!--product - is the key in delete fn(views)-->
+<form method="POST">
+    {% csrf_token %}
+    <button type="submit"> Delete </button>
+</form>
+{% endblock %}

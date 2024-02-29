@@ -1,0 +1,9 @@
+
+<!--Nav bar-->
+        <nav class="navbar navbar-light" style="background-color: #5f9ea0 ;">
+            <a class="navbar-brand">Misty Idukki</a>
+               <form action="{% url 'search_app:SearchResult' %}" method="get">
+                    <input type="text" name="q" placeholder="Search...">
+                    <button type="submit">Search</button>
+                </form>
+        </nav>

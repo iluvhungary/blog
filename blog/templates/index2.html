@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<!--product is from the product_detail(views)-->
+<br>
+<h1> {{ product.name}} </h1><br>
+<div>
+    <img src="{{product.img.url}}" alt="{{product.name}}" width="400">
+</div>
+<br>
+<p>{{ product.desc }}</p>
+<a href="{% url 'blogapp:edit' product.pk %}"> Edit</a>
+<a href="{% url 'blogapp:delete' product.pk %}"> Delete</a> <br>
+<a href="{% url 'blogapp:product_list' %}"> Home </a>
+
+{% endblock %}

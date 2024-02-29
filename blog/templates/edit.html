@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h2> Edit Blog Post </h2>
+<form method="POST">
+<!-- Including {% csrf_token %} in your forms is an important security measure to protect against CSRF attacks and-->
+<!-- is recommended for all forms that perform actions such as submitting data, updating records, or deleting records in Django applications.-->
+    {% csrf_token %}
+
+<!-- This template variable renders the form fields using the as_p method,
+which formats the form fields as paragraphs (<p> elements).-->
+<!-- Each form field is displayed with a label and an input field.-->
+    {{ form.as_p }}
+    <button type="submit"> Save Changes </button>
+</form>
+{% endblock %}
